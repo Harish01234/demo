@@ -3,7 +3,7 @@ import {User} from '@/model/User'
 import { error } from "console";
 import {NextRequest,NextResponse} from "next/server"
 import bcryptjs from 'bcryptjs'
-
+import jwt from 'jsonwebtoken'
 
 connectDb()
 
