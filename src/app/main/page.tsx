@@ -8,6 +8,7 @@ function page() {
     <div><Input placeholder='username'/></div>
     <div><Input placeholder='email'/></div>
     <div><Input placeholder='password'/></div>
+    <div><Input placeholder='state'/></div>
     </div>
   )
 }
