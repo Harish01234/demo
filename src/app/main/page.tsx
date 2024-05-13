@@ -1,14 +1,14 @@
 import React from 'react'
 import { Input } from "@/components/ui/input"
+import { ModeToggle } from '@/components/modeToggle'
+
 
 
 function page() {
   return (
-    <div className=''>
-    <div><Input placeholder='username'/></div>
-    <div><Input placeholder='email'/></div>
-    <div><Input placeholder='password'/></div>
-    <div><Input placeholder='state'/></div>
+    <div >
+   <div className='absolute top-0 right-0'><ModeToggle/></div>
+    
     </div>
   )
 }
