@@ -3,14 +3,13 @@ import React, { useState } from 'react'
 import { Input } from "@/components/ui/input"
 import { ModeToggle } from '@/components/modeToggle'
 
-import connectDb from '@/lib/connectDb'
+
 import { Button } from '@/components/ui/button'
-import { User } from '@/model/User'
+
 import axios from 'axios'
-import { error } from 'console'
 
 function page() {
-    const [user, setUser] = React.useState({
+    const [user, setUser] = useState({
         email: "",
         password: "",
         username: "",
