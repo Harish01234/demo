@@ -8,10 +8,11 @@ import jwt from 'jsonwebtoken'
 connectDb()
 export async function POST(request:NextRequest) {
 
+    
     const reqBody=await request.json()
-    const {username,name,reps,weight}=reqBody
+    const {email,name,reps,weight}=reqBody
     try {
-        const user = await User.findOne({ username }).exec();
+        const user = await User.findOne({ email }).exec();
 
         
     if (!user) {

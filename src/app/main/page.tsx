@@ -8,6 +8,9 @@ import {useRouter} from "next/navigation";
 
 import { Button } from '@/components/ui/button'
 import axios from 'axios'
+import mongoose from 'mongoose'
+import connectDb from '@/lib/connectDb'
+import { User } from '@/model/User'
 
 function Page() {
 
@@ -18,10 +21,14 @@ function Page() {
 
   })
   const signinhandler = () => {
-    console.log(user);
+    
+    
     try {
      const response= axios.post('/api/signin', user)
      console.log(response);
+    
+     console.log(user);
+    // const data=await User.findOne({email:user.email})
      response.then((res)=>{ router.push(`/profile/${user.email}`)}).catch((err)=>{console.log(err);
      })
      
