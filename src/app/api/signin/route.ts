@@ -4,6 +4,7 @@ import { error } from "console";
 import {NextRequest,NextResponse} from "next/server"
 import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import { exit } from 'process';
 
 connectDb()
 export async function POST(request:NextRequest) {
@@ -24,6 +25,7 @@ export async function POST(request:NextRequest) {
        if(!validpassword)
         {
             return NextResponse.json({error:"cheek your credentials"},{status:400})
+    
         }
 
         const tokendata={
