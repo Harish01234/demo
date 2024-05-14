@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 
 import axios from 'axios'
 
-function page() {
+function Page() {
     const [user, setUser] = useState({
         email: "",
         password: "",
@@ -45,4 +45,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
