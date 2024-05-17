@@ -3,6 +3,7 @@ import { Button } from './ui/button';
 import { User } from '@/model/User';
 import { Input } from './ui/input';
 import axios from 'axios';
+import { useParams } from 'next/navigation';
 
 // Define the interface for the exercise object
 interface Exercise {
@@ -19,6 +20,9 @@ interface ExerciseViewProps {
 
 function ExerciseView({ exercises }: ExerciseViewProps) {
 
+    const params = useParams<{ username: string }>();
+    const email = params.username;
+    const emailWithoutPercentEncoding = decodeURIComponent(email);
     
     const [showForm, setShowForm] = useState(false);
     const [data, setdata] = useState({
@@ -63,6 +67,16 @@ function ExerciseView({ exercises }: ExerciseViewProps) {
         )
     }
 
+
+    const deleteexercise=async (_id:any)=>{
+        axios.post('/api/deleteexercise',{
+            email:emailWithoutPercentEncoding,
+            _id
+        }).then(()=>{console.log('exercise deleted');
+        }).catch(()=>{console.log("erron in deleting exercise");
+        })
+    }
+
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="w-full max-w-md p-6 bg-gray-300 rounded-lg shadow-lg text-black"> {/* Ensuring text color is set */}
@@ -82,7 +96,7 @@ function ExerciseView({ exercises }: ExerciseViewProps) {
                                     <td className="border px-4 py-2 text-center">{exercise.name}</td>
                                     <td className="border px-4 py-2 text-center">{exercise.reps}</td>
                                     <td className="border px-4 py-2 text-center">{exercise.weight}</td>
-                                    
+                                    <Button onClick={()=>{deleteexercise(exercise._id)}}>X</Button>
                                 </tr>
                             ))}
 
