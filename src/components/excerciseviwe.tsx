@@ -19,7 +19,7 @@ interface ExerciseViewProps {
 
 function ExerciseView({ exercises }: ExerciseViewProps) {
 
-
+    
     const [showForm, setShowForm] = useState(false);
     const [data, setdata] = useState({
         "exerciseId":" ",

@@ -6,8 +6,11 @@ import axios from 'axios';
 import { error } from 'console';
 import { useParams } from 'next/navigation';
 import React, { useState } from 'react'
+import {useRouter} from "next/navigation";
 
 function Page() {
+  const router = useRouter();
+  
   const params = useParams<{ username: string }>();
   const email = params.username;
   const emailWithoutPercentEncoding = decodeURIComponent(email);
@@ -17,6 +20,8 @@ function Page() {
     reps:'',
     weight:''
   })
+
+  
 
   const [viewdata, setViewData] = useState([]); 
     const add=async()=>{
@@ -54,7 +59,15 @@ function Page() {
       
     }
 
-
+    const signout=async ()=>{
+      await axios.get('/api/logout').then(()=>{
+        router.push("/main")
+        console.log("signout done");
+      }).catch(()=>{
+        console.log("problem in signout");
+        
+      })
+    }
 
   return (
     <div>
@@ -71,6 +84,7 @@ function Page() {
         
 
         <Button onClick={viewexercisedata}>view all exercise</Button>
+        <Button onClick={signout}>signout</Button>
       </div>
       <ExerciseView exercises={viewdata} />
 
